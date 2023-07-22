@@ -7,18 +7,27 @@ const [timer, setTimer] = useState(30)
 
     const userAnswer = (e) => {
 
-        
-        setYourAnswers((prevanswers) => [...prevanswers, {
-            question : questionData[count]?.question,
-            correct_answer : questionData[count]?.correct_answer,
-            your_answer: e.currentTarget.value
-        }])
+        // console.log('e.currentTarget.value:', e.target.value);
+
+            setYourAnswers((prevanswers) => [...prevanswers, {
+                question : questionData[count].question,
+                correct_answer : questionData[count].correct_answer,
+                your_answer: e.target.value
+            }])
+
+   
+      
+       
 
         setCount(count + 1)
 
 
-        e.currentTarget.value === questionData[count]?.correct_answer && setPoint(point + 100)
-        if(count == 9){
+        if (e.currentTarget.value === questionData[count]?.correct_answer) {
+            setPoint(point + 100);
+          
+        }
+
+        if(count >= 9){
 
             setModal(true)
 
@@ -35,7 +44,7 @@ const [timer, setTimer] = useState(30)
                 setTimer(timer - 1)
             }
 
-            if(timer == 0 && count < 10 ){
+            if(timer === 0 && count < 10 ){
                 setCount(count + 1)
                 setTimer(30)
             }else if(count >= 10){
@@ -51,7 +60,7 @@ const [timer, setTimer] = useState(30)
             clearInterval(interval)
         }
 
-    },[timer])
+    },[timer]) 
 
     // useEffect(()=>{
     //     console.log(yourAnswers)

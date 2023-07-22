@@ -8,7 +8,7 @@ import Questions from '../Components/Questions';
 
 const Quiz = () => {
 
-  const {difficulty, amount} = useParams();
+  const {difficulty} = useParams();
   const [questionData, setQuestionData] = useState([])
   const [count, setCount] = useState(0)
   const [point, setPoint] = useState(0)
@@ -32,7 +32,7 @@ const Quiz = () => {
     getData()
     
   }, [])
-
+ 
   return (
     <div className='flex items-center justify-center h-screen  '>
 
